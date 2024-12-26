@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Java Learning Tracker</title>
+  <style>
+    .github-link {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="github-link">
+  <a href="https://github.com/LakshmiDharani" target="_blank">My GitHub</a>
+</div>
+<h1>Java Learning Tracker</h1>
+<form action="/setPreparationTime" method="post">
+  <label for="time">Preparation Time:</label>
+  <input type="text" id="time" name="time" value="" />
+  <button type="submit">Set Time</button>
+</form>
+<p>Current Preparation Time: <span th:text="${preparationTime}"></span></p>
+<h2>Topics Covered</h2>
+<form action="/addTopic" method="post">
+  <label for="topicName">Add a Topic:</label>
+  <input type="text" id="topicName" name="topicName" />
+  <button type="submit">Add Topic</button>
+</form>
+<ul>
+  <li th:each="topic : ${topics}">
+    <span th:text="${topic.name}"></span> -
+    <span th:text="${topic.covered ? 'Covered' : 'Not Covered'}"></span>
+    <form action="/markAsCovered" method="post" style="display:inline;">
+      <input type="hidden" name="topicName" th:value="${topic.name}" />
+      <button type="submit">Mark as Covered</button>
+    </form>
+  </li>
+</ul>
+</body>
+</html>
