@@ -1,1 +1,1 @@
-A repository for practicing Dockerfile concepts with various use cases and examples.
+Deploy a containerized java application on an AWS EC2 instance using Docker. This project demonstrates launching an EC2 instance, setting up Docker, creating a simple application, and running it in a container.
